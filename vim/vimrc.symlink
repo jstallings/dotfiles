@@ -1,0 +1,69 @@
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set noswapfile
+set nobackup
+
+
+"
+" Text Formatting
+"
+
+set autoindent
+set smartindent
+inoremap # X<BS>#
+set nowrap
+set softtabstop=2
+set shiftwidth=2
+set tabstop=4
+set expandtab
+set nosmarttab
+set formatoptions+=n
+set virtualedit=block
+
+
+
+"
+" UI
+"
+
+set ruler
+set noshowcmd
+set nolazyredraw
+set number
+set wildmenu
+set wildmode=list:longest,full
+set ch=2
+set backspace=2
+set whichwrap+=<,>,h,l,[,]
+set shortmess=filtIoOA
+set report=0
+set nostartofline
+set background=dark
+
+"
+" Remaps
+"
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+let g:pep8_map='<leader>8'
+
+"
+" Visual Cues
+"
+
+set showmatch
+set mat=5
+set incsearch
+set laststatus=2
+set ignorecase
+set nohlsearch
+set visualbell
+
+set foldmethod=indent
+set foldlevel=99

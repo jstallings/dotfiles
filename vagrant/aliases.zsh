@@ -1,0 +1,7 @@
+alias vst="vagrant status"
+alias vss="vagrant ssh"
+alias vu="vagrant up"
+alias vd="vagrant destroy"
+alias vp="vagrant provision"
+alias vr="vagrant reload"
+alias vh="vagrant halt"

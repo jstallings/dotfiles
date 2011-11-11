@@ -1,0 +1,23 @@
+#Shortcut to the dotfiles repository on the local system
+export ZSH=$HOME/.dotfiles
+
+#my dev directory
+export PROJECTS=~/code
+
+#sourcing every .zsh file in each subdirectory of $ZSH
+for config_file ($ZSH/**/*.zsh) source $config_file
+
+#source local file for private stuff
+if [[ -a ~/.localrc ]]
+then 
+  source ~/.localrc
+fi
+
+autoload -U compinit
+compinit
+
+#load all the autocompletion files after autocomplete loads
+for config_file ($ZSH/**/completion.sh) source $config_file
+
+
+
