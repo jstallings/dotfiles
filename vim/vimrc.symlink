@@ -1,4 +1,3 @@
-call pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -51,7 +50,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-let g:pep8_map='<leader>8'
 
 "
 " Visual Cues
