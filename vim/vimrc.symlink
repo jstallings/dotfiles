@@ -11,18 +11,16 @@ Bundle 'gmarik/vundle'
 
 " My Bundles Here:
 "
-" original repos on github
-
-" non github-repos
 Bundle 'wincent/Command-T'
 Bundle 'msanders/snipmate.vim'
-
+Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on
 syntax on
 set noswapfile
 set nobackup
 
+let mapleader=","
 
 "
 " Text Formatting
@@ -84,3 +82,11 @@ set visualbell
 
 set foldmethod=indent
 set foldlevel=99
+" ------------------
+"  NERDTree
+"  -----------------
+nmap <silent><C-n> :NERDTree<CR>
+nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>nc :NERDTreeClose<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
