@@ -1,6 +1,25 @@
-syntax on
-filetype plugin indent on
+set nocompatible
+filetype off
 
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" Let Vundle manage Vundle
+" required!
+
+Bundle 'gmarik/vundle'
+
+" My Bundles Here:
+"
+" original repos on github
+
+" non github-repos
+Bundle 'wincent/Command-T'
+Bundle 'msanders/snipmate.vim'
+
+
+filetype plugin indent on
+syntax on
 set noswapfile
 set nobackup
 

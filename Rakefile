@@ -32,6 +32,13 @@ task :install do
     end
     `ln -s "$PWD/#{linkable}" "#{target}"`
   end
+
+  #vim tasks
+  system('vim +BundleInstall! +BundleClean! +qa! ')
+  Dir.chdir("#{ENV['HOME']}/.vim/bundle/Command-T/ruby/command-t") do
+    system("ruby extconf.rb") 
+    system("make")
+  end
 end
 
 task :uninstall do
