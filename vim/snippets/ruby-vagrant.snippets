@@ -1,0 +1,9 @@
+snippet vagrant
+	Vagrant::Config.run do |${1:config}|
+	  ${2}
+	end
+
+snippet multivm
+	${1:config}.vm.define :${2:myvm} do |${3:myvm_config}|
+	  $3.vm.box = "${4:lucid32}"
+	end
