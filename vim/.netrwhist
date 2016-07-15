@@ -1,4 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/john/.dotfiles'
-let g:netrw_dirhist_2='/Users/john/Development/Purple/LyricsLauncher/fastlane'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/john/Development/Clients/TapThere/TapThere-iPhone/fastlane'

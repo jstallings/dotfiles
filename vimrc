@@ -64,14 +64,15 @@ Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-dispatch'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Colorschemes
 "
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'markcornick/vim-hashicorp-tools'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -89,7 +90,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-let g_rspec_command = "Dispatch rspec {spec}"
+let g_rspec_command = "Dispatch bin/rspec {spec}"
 
 
 "let g:solarized_termcolors=16
@@ -100,11 +101,6 @@ syntax on
 set noswapfile
 set nobackup
 
-"
-" Powerline overrides
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'skwp'
-let g:Powerline_colorscheme = 'skwp'
 "
 " Text Formatting
 "
@@ -199,6 +195,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Spelling aliases
 command! Q q " Bind :Q to :q
+command! Wq wq "Bind :Wq to wq
 
 
 map <C-s> <esc>:w<CR>

@@ -16,8 +16,11 @@ setopt share_history
 
 setopt autocd
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+setopt menu_complete
 #path
 export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH"
+export PATH=".git/safe/../../bin:$PATH"
 
 eval "$(rbenv init - zsh)"
 
@@ -41,10 +44,13 @@ zstyle ':vcs_info:*' enable git
 }
 
 precmd () { vcs_info }
-PROMPT='%F{3}%3~ ${vcs_info_msg_0_} %f%# '
-
+#PROMPT='%F{3}%3~ ${vcs_info_msg_0_} %f%# '
+PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
 stty stop undef
 stty start undef
+
+#Ruby
+alias be='bundle exec'
 
 #Homebrew
 alias bu='brew update'
@@ -57,16 +63,40 @@ alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 
+##docker
+alias dm='docker-machine'
+alias dmc='docker-machine create --driver vmwarefusion'
+
+
 ##git
 alias g=git
 alias ga='git add'
 alias gA='git add .'
-alias gAc='git add . && git commit'
-alias gc='git commit'
+alias gAc='git add . && git commit --verbose'
+alias gbc='git checkout -b'
+alias gbx='git branch -d'
+alias gbX='git branch -D'
+alias gc='git commit --verbose'
 alias gcm='git commit -m'
+alias gco='git checkout'
+alias gf='git fetch'
+alias glg='git log --topo-order --all --graph --pretty=format:"%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n"'
+alias gm='git merge'
+alias grH='git reset --hard HEAD'
 alias gp='git push'
-alias gs='git status'
+alias gpt='git push --tags'
+alias gr='git rebase'
+alias grm='git rebase master'
+alias gs='git status --short'
+alias gt='git tag'
+alias gtf='git tag -f'
+alias gX='git clean -df'
 
+##common operations
+alias l='ls -lFh'
+alias ll='ls -lt'
+
+alias zU='source ~/.zshrc'
 ##history
 
 alias h='history'
@@ -87,3 +117,4 @@ alias smart="cd $HOME/Development/SmartScreen/"
 alias tapthere="cd $HOME/Development/TapThere"
 
 #. `brew --prefix`/etc/profile.d/z.sh
+source /usr/local/share/zsh/site-functions/_aws

@@ -32,6 +32,6 @@
 [push]
 	default = current
 [merge]
-  ff = only
+#  ff = only
 [fetch]
   prune = true
