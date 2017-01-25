@@ -49,6 +49,8 @@ PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
 stty stop undef
 stty start undef
 
+alias rake="noglob rake"
+
 #Ruby
 alias be='bundle exec'
 
@@ -118,3 +120,7 @@ alias tapthere="cd $HOME/Development/TapThere"
 
 #. `brew --prefix`/etc/profile.d/z.sh
 source /usr/local/share/zsh/site-functions/_aws
+
+
+#general aliases
+alias me="cd ~/Dropbox/Shared/me"

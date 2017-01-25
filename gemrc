@@ -1,6 +1,10 @@
+---
+:backtrace: false
+:bulk_threshold: 1000
 :sources:
 - http://rubygems.org
-install: --no-document
-update: --no-document
+- https://rubygems.org
 :update_sources: true
-:backtrace: false
+:verbose: true
+install: "--no-document"
+update: "--no-document"

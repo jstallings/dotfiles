@@ -48,7 +48,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'tpope/vim-surround'
-
+Plugin 'hashivim/vim-terraform'
 " Dash integration
 "
 Plugin 'rizzatti/funcoo.vim'

@@ -22,5 +22,6 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+.vscode
 
 TODO

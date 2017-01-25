@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/john/Development/Clients/TapThere/TapThere-iPhone/fastlane'
 let g:netrw_dirhist_2='/Users/john/Development/Purple/DigitalTemperature/ios/fastlane'
 let g:netrw_dirhist_3='/Users/john/Development/Mobeezio/earthquake/ios/fastlane'
 let g:netrw_dirhist_4='/Users/john/.aws'
 let g:netrw_dirhist_5='/Users/john/Development/Clients/TapThere/infrastructure/.terraform'
+let g:netrw_dirhist_6='/Users/john/Development/Clients/Rah/rah-server/.git'
+let g:netrw_dirhist_7='/Users/john/Development/Mobeezio/earthquake/ios/fastlane'
