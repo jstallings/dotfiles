@@ -21,6 +21,7 @@ setopt menu_complete
 #path
 export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH"
 export PATH=".git/safe/../../bin:$PATH"
+export PATH="$HOME/.fastlane/bin:$PATH"
 
 eval "$(rbenv init - zsh)"
 
@@ -124,3 +125,6 @@ source /usr/local/share/zsh/site-functions/_aws
 
 #general aliases
 alias me="cd ~/Dropbox/Shared/me"
+
+
+

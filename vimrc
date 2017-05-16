@@ -4,25 +4,25 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Let Vundle manage Vundle
-" required!
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-dispatch'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'elixir-lang/vim-elixir'
+call vundle#end()            " required
+
 let mapleader=","
 
 inoremap <leader>, <ESC>
 nnoremap <leader><leader> <c-^>
-
-:nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
-
-" Remap those nasty arrow keys to stop using them
-"
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
 
 " Save a keystroke when navigating splits
 map <C-j> <C-w>j
@@ -30,61 +30,16 @@ map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
-Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'msanders/cocoa.vim'
-
-" Search and Navigation
-"
-Plugin 'rking/ag.vim'
-
-Plugin 'kien/ctrlp.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-
-" Snippets
-"
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-Plugin 'tpope/vim-surround'
-Plugin 'hashivim/vim-terraform'
-" Dash integration
-"
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-
-" Git integration
-"
-Plugin 'tpope/vim-fugitive'
-
-" Ruby and Rails stuff
-"
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-rails'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-dispatch'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'christoomey/vim-tmux-runner'
-
-" Colorschemes
-"
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'markcornick/vim-hashicorp-tools'
-
-call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Git mappings
 
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
-
-let g:rspec_command = "VtrSendCommandToRunner! be rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -92,19 +47,9 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-" Taken directly from
-" https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc
-"
-nnoremap <leader>fr :VtrFocusRunner<cr>
-nnoremap <leader>kr :VtrKillRunner<cr>
-nnoremap <leader>rr :VtrSendLinesToRunner<cr>
-nnoremap <leader>dr :VtrSendCtrlD<cr>
-nnoremap <leader>ar :VtrAttachToPane<cr>
-
 "let g:solarized_termcolors=16
 colorscheme solarized
 
-filetype plugin indent on
 syntax on
 set noswapfile
 set nobackup
@@ -114,15 +59,14 @@ set nobackup
 "
 
 set autoindent
-set smartindent
 inoremap # X<BS>#
 set nowrap
-set softtabstop=2
-set shiftwidth=2
+
 set tabstop=2
+set shiftwidth=2
 set shiftround
 set expandtab
-set nosmarttab
+
 set formatoptions+=n
 set virtualedit=block
 set encoding=utf-8
@@ -135,6 +79,7 @@ set cursorline
 set ruler
 set showcmd
 set nolazyredraw
+set relativenumber
 set number
 set wildmenu
 set wildmode=list:longest,full
@@ -177,6 +122,8 @@ set visualbell
 
 set foldmethod=indent
 set foldlevel=99
+
+map <leader>b :call ToggleBackground()<CR>
 " ------------------
 "  NERDTree
 "  -----------------
@@ -193,20 +140,27 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-"  ----------------------
-"  OmniComplete
-"
-"  ----------------------
-inoremap <Nul> <C-x><C-o>
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Spelling aliases
 command! Q q " Bind :Q to :q
 command! Wq wq "Bind :Wq to wq
 
 
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-map <C-S> <esc>:wq<CR>
-imap <C-S> <esc>:wq<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {"regex": "possibly useless use of a variable in void context"}
+
+function! ToggleBackground()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction

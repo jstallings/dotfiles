@@ -11,10 +11,6 @@ task :install do
       link_file(file)
     end
   end
-
-  # Need to do this to make vim use RVM's ruby version
-#  puts "Moving zshenv to zshrc"
-#  system %Q{sudo mv /etc/zshenv /etc/zshrc}
 end
 
 def replace_file(file)
