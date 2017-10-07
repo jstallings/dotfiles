@@ -17,6 +17,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'hashivim/vim-terraform'
+Plugin 'tpope/vim-commentary'
+
 call vundle#end()            " required
 
 let mapleader=","
@@ -39,7 +42,7 @@ nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -49,6 +52,12 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 "let g:solarized_termcolors=16
 colorscheme solarized
+
+"vim-terraform
+let g:terraform_align=1
+autocmd FileType terraform setlocal commentstring=#%s
+
+autocmd FileType qf setlocal wrap linebreak
 
 syntax on
 set noswapfile
