@@ -25,6 +25,8 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 
 eval "$(rbenv init - zsh)"
 
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 #prompt
 setopt prompt_subst
@@ -47,6 +49,16 @@ zstyle ':vcs_info:*' enable git
 precmd () { vcs_info }
 #PROMPT='%F{3}%3~ ${vcs_info_msg_0_} %f%# '
 PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL ]% %{reset_color}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 stty stop undef
 stty start undef
 

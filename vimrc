@@ -19,6 +19,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()            " required
 
@@ -26,6 +27,9 @@ let mapleader=","
 
 inoremap <leader>, <ESC>
 nnoremap <leader><leader> <c-^>
+
+
+map <Leader>pp :%!python -m json.tool<CR>
 
 " Save a keystroke when navigating splits
 map <C-j> <C-w>j
