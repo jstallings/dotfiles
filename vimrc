@@ -19,14 +19,20 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-commentary'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'junegunn/fzf'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 
 let mapleader=","
+
+set rtp+=/usr/local/opt/fzf
 
 inoremap <leader>, <ESC>
 nnoremap <leader><leader> <c-^>

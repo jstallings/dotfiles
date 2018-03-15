@@ -47,18 +47,18 @@ zstyle ':vcs_info:*' enable git
 }
 
 precmd () { vcs_info }
-#PROMPT='%F{3}%3~ ${vcs_info_msg_0_} %f%# '
 PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
 
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL ]% %{reset_color}"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
   zle reset-prompt
+  zle -R
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+VIM_PROMPT="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
+RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
 stty stop undef
 stty start undef
 
@@ -79,9 +79,11 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 
 ##docker
-alias dm='docker-machine'
-alias dmc='docker-machine create --driver vmwarefusion'
+alias dcu='docker-compose up'
 
+##kubernetes
+alias k=kubectl
+alias kgb=kubectl get pods
 
 ##git
 alias g=git
@@ -99,6 +101,7 @@ alias glg='git log --topo-order --all --graph --pretty=format:"%C(green)%h%C(res
 alias gm='git merge'
 alias grH='git reset --hard HEAD'
 alias gp='git push'
+alias gpA='gp && gpt'
 alias gpt='git push --tags'
 alias gr='git rebase'
 alias grm='git rebase master'
