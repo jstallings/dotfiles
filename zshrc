@@ -2,6 +2,7 @@
 autoload -U compinit
 compinit
 
+export EDITOR=vim
 
 export HISTSIZE=20000
 export HISTFILE="$HOME/.zhistory"
@@ -36,7 +37,7 @@ zstyle ':vcs_info:*' unstagedstr 'M'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}%F{5}]%f '
 zstyle ':vcs_info:*' formats \
-  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
+  '%F{5}(%F{2}%b%F{5}) %F{2}%c%F{3}%u%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' enable git
 +vi-git-untracked() {
@@ -46,8 +47,9 @@ zstyle ':vcs_info:*' enable git
   fi
 }
 
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 precmd () { vcs_info }
-PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
+PROMPT='${vcs_info_msg_0_} %f% $(kube_ps1) %f%# '
 
 function zle-line-init zle-keymap-select {
   zle reset-prompt
@@ -151,5 +153,27 @@ alias me="cd ~/Dropbox/Shared/me"
 #powerline setup
 powerline-daemon -q
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+_tmuxinator() {
+  local commands projects
+  commands=(${(f)"$(tmuxinator commands zsh)"})
+  projects=(${(f)"$(tmuxinator completions start)"})
+
+  if (( CURRENT == 2 )); then
+    _describe -t commands "tmuxinator subcommands" commands
+    _describe -t projects "tmuxinator projects" projects
+  elif (( CURRENT == 3)); then
+    case $words[2] in
+      copy|debug|delete|open|start)
+        _arguments '*:projects:($projects)'
+      ;;
+    esac
+  fi
+
+  return
+}
+
+compdef _tmuxinator tmuxinator mux
+alias mux="tmuxinator"
 
 
