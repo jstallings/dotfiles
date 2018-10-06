@@ -20,6 +20,8 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Bundle 'edkolev/tmuxline.vim'
 
 call vundle#end()            " required
 
@@ -177,3 +179,8 @@ function! ToggleBackground()
         set background=light
     endif
 endfunction
+
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup

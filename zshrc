@@ -107,6 +107,13 @@ alias gt='git tag'
 alias gtf='git tag -f'
 alias gX='git clean -df'
 
+#kuberenetes
+alias k=kubectl
+alias kgp='kubectl get pods'
+
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
 ##common operations
 alias l='ls -lFh'
 alias ll='ls -lt'
@@ -138,5 +145,8 @@ source /usr/local/share/zsh/site-functions/_aws
 #general aliases
 alias me="cd ~/Dropbox/Shared/me"
 
+#powerline setup
+powerline-daemon -q
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 
