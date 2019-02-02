@@ -1,3 +1,15 @@
+source /usr/local/share/antigen/antigen.zsh
+#Antigen bundles
+
+antigen theme denysdovhan/spaceship-prompt
+
+antigen bundle autojump
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen apply
+
+
 #enable tab completion
 autoload -U compinit
 compinit
@@ -23,44 +35,22 @@ setopt menu_complete
 export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH"
 export PATH=".git/safe/../../bin:$PATH"
 export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+export KUBECONFIG=$HOME/.kube/config
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/tapthere.kubeconfig
 
 eval "$(rbenv init - zsh)"
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-#prompt
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' stagedstr 'M'
-zstyle ':vcs_info:*' unstagedstr 'M'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}%F{5}]%f '
-zstyle ':vcs_info:*' formats \
-  '%F{5}(%F{2}%b%F{5}) %F{2}%c%F{3}%u%f'
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' enable git
-+vi-git-untracked() {
-  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-    git status --porcelain | grep '??' &> /dev/null ; then
-    hook_com[unstaged]+='%F{1}??%f'
-  fi
-}
+export SPACESHIP_DOCKER_SHOW=false
+export SPACESHIP_KUBECONTEXT_COLOR=purple
 
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-precmd () { vcs_info }
-PROMPT='${vcs_info_msg_0_} %f% $(kube_ps1) %f%# '
+autoload -U promptinit; promptinit
+prompt spaceship
 
-function zle-line-init zle-keymap-select {
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-VIM_PROMPT="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
-RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
 stty stop undef
 stty start undef
 
