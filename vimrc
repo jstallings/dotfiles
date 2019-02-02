@@ -22,6 +22,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()            " required
 
@@ -30,6 +31,7 @@ let mapleader=","
 inoremap <leader>, <ESC>
 nnoremap <leader><leader> <c-^>
 
+let g:airline_theme='solarized'
 
 map <Leader>pp :%!python -m json.tool<CR>
 
@@ -171,7 +173,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {"regex": "possibly useless use of a variable in void context"}
-
+let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 function! ToggleBackground()
     if &background == "light"
         set background=dark
