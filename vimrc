@@ -26,7 +26,6 @@ Plugin 'vim-airline/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/fzf'
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 
@@ -193,6 +192,3 @@ function! ToggleBackground()
 endfunction
 
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
