@@ -44,7 +44,7 @@ eval "$(rbenv init - zsh)"
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
-
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
 export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_KUBECONTEXT_COLOR=purple
 
@@ -130,19 +130,10 @@ alias v=vim
 
 
 #client aliases (move these to a gitignore local file)
-alias smart="cd $HOME/Development/SmartScreen/"
-alias tapthere="cd $HOME/Development/TapThere"
 
 #. `brew --prefix`/etc/profile.d/z.sh
 source /usr/local/share/zsh/site-functions/_aws
-
-
-#general aliases
-alias me="cd ~/Dropbox/Shared/me"
-
-#powerline setup
-powerline-daemon -q
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 _tmuxinator() {
   local commands projects
