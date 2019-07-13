@@ -49,7 +49,7 @@ export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_KUBECONTEXT_COLOR=purple
 
 autoload -U promptinit; promptinit
-prompt spaceship
+#prompt spaceship
 
 stty stop undef
 stty start undef

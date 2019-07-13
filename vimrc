@@ -109,7 +109,7 @@ set whichwrap+=<,>,h,l,[,]
 set shortmess=filtIoOA
 set report=0
 set nostartofline
-set background=dark
+set background=light
 set autoread
 
 if executable('ag')
