@@ -39,6 +39,7 @@ export PATH="$HOME/go/bin:$PATH"
 
 export KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/tapthere.kubeconfig
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/genalyte.kubeconfig
 
 eval "$(rbenv init - zsh)"
 
@@ -123,6 +124,7 @@ function hs
   history | grep $*
 }
 
+function gtp { git tag $1 && git push --tags }
 
 ##vim
 alias v=vim
