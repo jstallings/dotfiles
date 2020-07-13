@@ -49,6 +49,8 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
 export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_KUBECONTEXT_COLOR=purple
 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
 autoload -U promptinit; promptinit
 #prompt spaceship
 
@@ -159,4 +161,5 @@ _tmuxinator() {
 compdef _tmuxinator tmuxinator mux
 alias mux="tmuxinator"
 
-
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

@@ -66,7 +66,7 @@ colorscheme solarized
 
 "vim-terraform
 let g:terraform_align=1
-autocmd FileType terraform setlocal commentstring=#%s
+let g:terraform_fmt_on_save=1
 
 autocmd FileType qf setlocal wrap linebreak
 
@@ -177,9 +177,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {"regex": "possibly useless use of a variable in void context"}
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
-
-let g:terraform_fmt_on_save=1
-let g:terraform_align=1
 
 function! ToggleBackground()
     if &background == "light"
